@@ -1,0 +1,27 @@
+/* src/styles.css */
+
+/* اتجاه النصوص حسب لغة الصفحة */
+html[dir="rtl"] body {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="ltr"] body {
+  text-align: left;
+  direction: ltr;
+}
+
+/* تعديل المسافات في الـ RTL */
+html[dir="rtl"] .navbar-nav {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+.about-section {
+  padding: 50px 0;
+}
+
+.about-section img {
+  max-height: 350px;
+  object-fit: cover;
+}

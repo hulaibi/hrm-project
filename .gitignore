@@ -1,0 +1,30 @@
+# --- Python/Django ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+/media/
+staticfiles/
+.env
+.venv/
+.env.local
+*.log
+
+# --- Node/React ---
+node_modules/
+dist/
+.vite/
+npm-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# --- OS/IDE ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# --- Docker ---
+*.pid
