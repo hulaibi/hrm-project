@@ -13,6 +13,8 @@ const resources = {
       profile: "Profile",
       about: "About Us",
       contact: "Contact",
+      leaves: "Leave Requests",
+      hrLeaves: "HR - Leaves",
 
       // HOME
       welcomeMessage: "Welcome to the HRM System",
@@ -129,6 +131,8 @@ const resources = {
       profile: "الملف الشخصي",
       about: "من نحن",
       contact: "للتواصل",
+      leaves: "طلبات الإجازة",
+      hrLeaves: "لوحة الإجازات (HR)",
 
       // HOME
       welcomeMessage: "مرحباً بك في نظام إدارة الموارد البشرية",

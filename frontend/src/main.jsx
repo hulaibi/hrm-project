@@ -14,6 +14,7 @@ import './styles.css'; // ملف ستايل مخصص
 import JobsList from './components/JobsList';
 import JobApply from './components/JobApply';
 import HrJobs from "./components/HrJobs";
+import LeaveCenter from "./components/LeaveCenter";
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -31,6 +32,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/jobs" element={<JobsList />} />
           <Route path="/apply/:id" element={<JobApply />} />
           <Route path="/hr/jobs" element={<HrJobs />} />
+          <Route path="/leaves" element={<LeaveCenter isHR={false} />} />
+          <Route path="/hr/leaves" element={<LeaveCenter isHR={true} />} />
         </Routes>
       </div>
     </BrowserRouter>

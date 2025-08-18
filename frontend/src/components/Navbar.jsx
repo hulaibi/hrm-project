@@ -8,7 +8,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const isLoggedIn = !!localStorage.getItem("access_token");
-  const role = localStorage.getItem("role"); // تأكد تحفظه بعد تسجيل الدخول
+  const role = localStorage.getItem("role"); // احفظه بعد تسجيل الدخول: "user" | "hr" | "admin"
 
   const handleLogout = () => {
     localStorage.removeItem("access_token");
@@ -18,10 +18,11 @@ export default function Navbar() {
   };
 
   const changeLanguage = (lang) => i18n.changeLanguage(lang);
+  const isRTL = i18n.language === "ar";
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
-      <div className="container">
+      <div className="container" style={{ direction: isRTL ? "rtl" : "ltr" }}>
         <Link className="navbar-brand fw-bold" to="/">
           HRM
         </Link>
@@ -38,12 +39,8 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div
-          className="collapse navbar-collapse"
-          id="navbarNav"
-          style={{ direction: i18n.language === "ar" ? "rtl" : "ltr" }}
-        >
-          <ul className="navbar-nav ms-auto">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className={`navbar-nav ${isRTL ? "me-auto" : "ms-auto"}`}>
             {/* روابط عامة */}
             <li className="nav-item">
               <Link className="nav-link" to="/about">
@@ -58,18 +55,34 @@ export default function Navbar() {
 
             {isLoggedIn ? (
               <>
-                {/* رابط الوظائف العامة */}
+                {/* وظائف عامة */}
                 <li className="nav-item">
                   <Link className="nav-link" to="/jobs">
                     {t("jobs")}
                   </Link>
                 </li>
 
-                {/* رابط إدارة الوظائف للـ HR/Admin فقط */}
+                {/* إدارة الوظائف للـHR/Admin */}
                 {(role === "hr" || role === "admin") && (
                   <li className="nav-item">
                     <Link className="nav-link" to="/hr/jobs">
                       {t("jobsAdmin")}
+                    </Link>
+                  </li>
+                )}
+
+                {/* طلبات الإجازة للموظف */}
+                <li className="nav-item">
+                  <Link className="nav-link" to="/leaves">
+                    {t("leaves")}
+                  </Link>
+                </li>
+
+                {/* لوحة الإجازات للـHR/Admin */}
+                {(role === "hr" || role === "admin") && (
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/hr/leaves">
+                      {t("hrLeaves")}
                     </Link>
                   </li>
                 )}
@@ -101,7 +114,7 @@ export default function Navbar() {
             )}
 
             {/* تبديل اللغة */}
-            <li className="nav-item ms-3 d-flex align-items-center">
+            <li className={`nav-item ${isRTL ? "me-3" : "ms-3"} d-flex align-items-center`}>
               <button
                 className="btn btn-outline-light btn-sm me-1"
                 onClick={() => changeLanguage("ar")}

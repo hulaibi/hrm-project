@@ -7,5 +7,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('jobs.urls')),        # ← هذا يضع كل ما في jobs/urls.py تحت /api/
+    path('api/', include('leaves.urls')),
     path('api/auth/', include('accounts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
