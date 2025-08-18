@@ -118,6 +118,42 @@ const resources = {
       reset: "Reset",
       searchPlaceholder: "Search title/location...",
       confirmDelete: "Delete this job?",
+
+      // LEAVES PAGE (NEW)
+      leaveCenterTitle: "Leave Center",
+      leaveRequestsTitle: "Leave Requests",
+      hrMode: "HR mode",
+      employeeMode: "Employee mode",
+      table: {
+        idx: "#",
+        employee: "Employee",
+        from: "From",
+        to: "To",
+        reason: "Reason",
+        state: "Status",
+        actions: "Actions",
+        noData: "No requests",
+        approve: "Approve",
+        reject: "Reject"
+      },
+      leaveState: {
+        pending: "pending",
+        approved: "approved",
+        rejected: "rejected"
+      },
+      authHint: "Auth mode",
+
+      leaveForm: {
+        title: "Submit Leave Request",
+        submit: "Send",
+        submitting: "Sending...",
+        success: "Leave request submitted successfully.",
+        error: "Failed to submit the request.",
+        dateInvalid: "End date must be after or equal to start date.",
+        netErrJwt: "Network Error. Check API base URL and your token.",
+        netErrSession: "Network Error. Check CORS/CSRF settings in Django with credentials."
+        }
+
     },
   },
 
@@ -236,6 +272,41 @@ const resources = {
       reset: "إعادة",
       searchPlaceholder: "ابحث بالعنوان/الموقع...",
       confirmDelete: "هل تريد حذف الوظيفة؟",
+
+      // LEAVES PAGE (NEW)
+      leaveCenterTitle: "مركز الإجازات",
+      leaveRequestsTitle: "طلبات الإجازة",
+      hrMode: "وضع HR",
+      employeeMode: "وضع موظف",
+      table: {
+        idx: "#",
+        employee: "الموظف",
+        from: "من",
+        to: "إلى",
+        reason: "السبب",
+        state: "الحالة",
+        actions: "إجراءات",
+        noData: "لا توجد طلبات",
+        approve: "قبول",
+        reject: "رفض"
+      },
+      leaveState: {
+        pending: "قيد الانتظار",
+        approved: "مقبول",
+        rejected: "مرفوض"
+      },
+      authHint: "وضع التوثيق",
+      leaveForm: {
+        title: "إرسال طلب إجازة",
+        submit: "إرسال",
+        submitting: "جارٍ الإرسال...",
+        success: "تم إرسال طلب الإجازة بنجاح.",
+        error: "فشل إرسال الطلب.",
+        dateInvalid: "تاريخ النهاية يجب أن يكون بعد أو يساوي تاريخ البداية.",
+        netErrJwt: "خطأ في الشبكة. تأكد من رابط الـAPI والتوكن.",
+        netErrSession: "خطأ في الشبكة. تحقق من إعدادات CORS/CSRF في Django مع withCredentials."
+      }
+
     },
   },
 };

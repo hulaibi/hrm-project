@@ -1,12 +1,12 @@
-from rest_framework import viewsets, status
+# backend/leaves/views.py
+from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from django.db.models import Q
 
 from .models import LeaveRequest
 from .serializers import LeaveRequestSerializer
-from .permissions import IsHR
+from .permissions import IsHR, is_hr_user
 
 class LeaveRequestViewSet(viewsets.ModelViewSet):
     queryset = LeaveRequest.objects.all()
@@ -15,10 +15,8 @@ class LeaveRequestViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        # HR يشوف الكل
-        if user.is_staff:
+        if is_hr_user(user):
             return LeaveRequest.objects.all()
-        # موظف: يشوف طلباته فقط
         return LeaveRequest.objects.filter(user=user)
 
     def perform_create(self, serializer):
@@ -26,7 +24,7 @@ class LeaveRequestViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['post'])
     def approve(self, request, pk=None):
-        if not request.user.is_staff:
+        if not is_hr_user(request.user):
             return Response({'detail': 'Not allowed'}, status=403)
         leave = self.get_object()
         leave.status = LeaveRequest.APPROVED
@@ -35,7 +33,7 @@ class LeaveRequestViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['post'])
     def reject(self, request, pk=None):
-        if not request.user.is_staff:
+        if not is_hr_user(request.user):
             return Response({'detail': 'Not allowed'}, status=403)
         leave = self.get_object()
         leave.status = LeaveRequest.REJECTED

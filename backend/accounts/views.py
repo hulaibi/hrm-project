@@ -1,3 +1,4 @@
+# backend/accounts/views.py
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework import generics, status
@@ -21,7 +22,7 @@ class RegisterView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# 🔹 تسجيل الدخول
+# 🔹 تسجيل الدخول (JWT)
 class LoginView(generics.GenericAPIView):
     serializer_class = LoginSerializer
     permission_classes = [AllowAny]
@@ -35,15 +36,34 @@ class LoginView(generics.GenericAPIView):
             'refresh': str(refresh),
             'access': str(refresh.access_token),
             'user': {
-                'username': user.username,
-                'email': user.email,
-                'role': user.role,
-                'phone': user.phone,
+                'username': getattr(user, 'username', None),
+                'email': getattr(user, 'email', None),
+                'role': getattr(user, 'role', None),
+                'phone': getattr(user, 'phone', None),
+                'is_staff': bool(getattr(user, 'is_staff', False)),
             }
         }, status=status.HTTP_200_OK)
 
 
-# 🔹 عرض أو تعديل بروفايل المستخدم الحالي
+# 🔹 معلومات المستخدم الحالي (لاستخدامها في الواجهة مثل /hr/leaves)
+#    Requires: Authorization: Bearer <access_token>  أو جلسة مصادقة صالحة
+class MeView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        u = request.user
+        data = {
+            "id": u.pk,
+            "username": getattr(u, "username", None),
+            "email": getattr(u, "email", None),
+            "role": getattr(u, "role", None),
+            "phone": getattr(u, "phone", None),
+            "is_staff": bool(getattr(u, "is_staff", False)),
+        }
+        return Response(data, status=status.HTTP_200_OK)
+
+
+# 🔹 عرض/تعديل بروفايل المستخدم الحالي
 class ProfileView(APIView):
     permission_classes = [IsAuthenticated]
 
