@@ -131,17 +131,14 @@ Consider separate repos for **frontend** and **backend** when:
 ---
 
 ## Screenshots
-Add your images to a folder (e.g., `docs/screenshots/`) and reference them here.
 
-```md
-## Screenshots
 
 <img width="875" height="425" alt="hrm home" src="https://github.com/user-attachments/assets/0e3266e9-f890-4b62-ae75-071d1b249794" />
 <img width="942" height="524" alt="hrm1" src="https://github.com/user-attachments/assets/f0b63959-3291-4d12-9f35-a560c01ab53c" />
 <img width="890" height="499" alt="hrm2" src="https://github.com/user-attachments/assets/6b1faf00-2d2d-49d0-bf93-35fdb878d7a8" />
 <img width="833" height="523" alt="hrm3" src="https://github.com/user-attachments/assets/dd130ac9-4124-457d-85e5-12399b9b18f1" />
 
-```
+
 
 > Tip: For GitHub, you can drag-and-drop images into PRs or issues to get hosted URLs, then paste them here.
 
