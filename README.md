@@ -138,10 +138,6 @@ Consider separate repos for **frontend** and **backend** when:
 <img width="890" height="499" alt="hrm2" src="https://github.com/user-attachments/assets/6b1faf00-2d2d-49d0-bf93-35fdb878d7a8" />
 <img width="833" height="523" alt="hrm3" src="https://github.com/user-attachments/assets/dd130ac9-4124-457d-85e5-12399b9b18f1" />
 
-
-
-> Tip: For GitHub, you can drag-and-drop images into PRs or issues to get hosted URLs, then paste them here.
-
 ---
 
 ## Project Structure (suggested)
@@ -296,18 +292,6 @@ CORS_ALLOWED_ORIGINS = [
 
 ---
 
-## السكرين شوت
-ضع الصور داخل مجلد مثل: `docs/screenshots/` ثم أشر إليها هنا:
-
-```md
-## Screenshots
-
-![الصفحة الرئيسية](docs/screenshots/home.png)
-![إرسال قضية](docs/screenshots/submit-case.png)
-![لوحة الإدارة](docs/screenshots/admin-dashboard.png)
-```
-
-> تلميح: في GitHub، يمكنك سحب وإفلات الصور للحصول على روابط جاهزة للصق هنا.
 
 ---
 
